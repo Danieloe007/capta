@@ -29,6 +29,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
+    "url": "https://github.com/Danieloe007/capta.git"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "date-fns": "^3.6.0",
+    "type": "git",
     "url": "https://github.com/TU_USUARIO/business-dates-api.git"
   },
   "dependencies": {

@@ -14,8 +14,8 @@ Thank you for your interest in contributing to the Business Dates API! This docu
 
 1. **Fork and clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/business-dates-api.git
-   cd business-dates-api
+   git clone https://github.com/Dagiiloe007/cp
+   cd cp
    ```
 
 2. **Install dependencies**
