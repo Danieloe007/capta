@@ -25,18 +25,16 @@
     "typescript",
     "serverless"
   ],
-  "author": "Tu Nombre <tu.email@ejemplo.com>",
+  "author": "Daniel Espinosa <danieloe007@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/Danieloe007/capta.git"
   },
-  "dependencies": {
-    "axios": "^1.7.2",
-    "date-fns": "^3.6.0",
-    "type": "git",
-    "url": "https://github.com/TU_USUARIO/business-dates-api.git"
+  "bugs": {
+    "url": "https://github.com/Danieloe007/capta/issues"
   },
+  "homepage": "https://github.com/Danieloe007/capta#readme",
   "dependencies": {
     "axios": "^1.7.2",
     "date-fns": "^3.6.0",
@@ -52,5 +50,8 @@
     "source-map-support": "^0.5.21",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
