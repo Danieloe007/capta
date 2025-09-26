@@ -97,34 +97,11 @@ const addBusinessDays = (date: Date, days: number, holidays: Holiday[]): Date =>
   const originalSecond = resultDate.getSeconds();
   const originalMillisecond = resultDate.getMilliseconds();
 
-  // Optimización: calcular días aproximados considerando fines de semana
-  if (days > 10) {
-    const weeksToAdd = Math.floor(days / 5);
-    const remainingDays = days % 5;
-
-    // Agregar semanas completas (7 días calendario = 5 días hábiles)
-    resultDate = add(resultDate, { days: weeksToAdd * 7 });
-    daysAdded = weeksToAdd * 5;
-
-    // Ajustar si caemos en fin de semana o festivo
-    while (isNonWorkingDay(resultDate, holidays)) {
-      resultDate = add(resultDate, { days: 1 });
-    }
-
-    // Agregar los días restantes
-    while (daysAdded < days) {
-      resultDate = add(resultDate, { days: 1 });
-      if (!isNonWorkingDay(resultDate, holidays)) {
-        daysAdded++;
-      }
-    }
-  } else {
-    // Para cantidades pequeñas, usar el método iterativo
-    while (daysAdded < days) {
-      resultDate = add(resultDate, { days: 1 });
-      if (!isNonWorkingDay(resultDate, holidays)) {
-        daysAdded++;
-      }
+  // Usar el método iterativo para precisión
+  while (daysAdded < days) {
+    resultDate = add(resultDate, { days: 1 });
+    if (!isNonWorkingDay(resultDate, holidays)) {
+      daysAdded++;
     }
   }
 
@@ -145,17 +122,7 @@ const addBusinessHours = (date: Date, hours: number, holidays: Holiday[]): Date 
   let resultDate = new Date(date);
   let hoursToAdd = hours;
 
-  // Optimización para grandes cantidades de horas
-  if (hours > 40) { // Más de una semana laboral
-    const daysToAdd = Math.floor(hours / WORK_HOURS_PER_DAY);
-    const remainingHours = hours % WORK_HOURS_PER_DAY;
-
-    // Agregar días completos
-    resultDate = addBusinessDays(resultDate, daysToAdd, holidays);
-    hoursToAdd = remainingHours;
-  }
-
-  // Agregar las horas restantes
+  // Agregar las horas de manera iterativa para precisión
   while (hoursToAdd > 0) {
     // Asegurar que estamos en un momento laboral válido
     if (isNonWorkingDay(resultDate, holidays)) {
